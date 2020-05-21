@@ -15,3 +15,11 @@ class Datastore:
     def save(self):
         raise NotImplementedError
 
+	def add_base_fields(self):
+    """
+      Adds some base fields to a comment object
+    """
+    _id = self.get_id()
+    self.comment.update({
+      "_id": _id,
+    })

@@ -1,3 +1,5 @@
+package test file;
+
 public class AddTwoNumbers {
 	
 	private String cat;
@@ -15,3 +17,4 @@ public class AddTwoNumbers {
 		System.out.println("Del of these numbers: " + del);
 	}
 }
+

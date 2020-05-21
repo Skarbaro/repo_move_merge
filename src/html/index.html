@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static widget_tweaks %}
+
+{% block title %}Books store{% endblock %}
+
+{% block content %}
+    <div class="sort-buttons">
+        <form class="query-form" method="GET" style="width: 200px;">
+            {% for field in sorted_by_date_form %}
+                <p><label>{{ field.label }}:</label>{% render_field field class="form-control" %}</p>
+            {% endfor %}
+        </form>
+        <script>
+            var form = document.getElementsByClassName("query-form")[0];
+            form.addEventListener("change", function(event) {
+                form.submit();
+            });
+        </script>
+    </div>
+    <div>
+        <a href="{% url "store:create" %}" class="badge badge-primary"> <img src="{% static "store/images/plus.svg" %}"> Add new book</a>
+        <a href="{% url "core:requests" %}" class="badge badge-success">Last 10 http requests</a>
+        <a href="{% url "core:logs" %}" class="badge badge-info">Logs of books manipulations</a>
+    </div>
+    <hr>
+    {% for book in book_list %}
+        <div>
+            <h4><a href="{% url "store:edit" book_id=book.id %}" class="badge badge-light">Book title: "{{ book.book_title }}"</a><a href="{% url "admin:store_book_change" book.id %}" class="badge badge-warning"> Edit <img src="{% static "store/images/pencil.svg" %}"></a></h4>
+            <p>Autors: {{ book.authors_info }}</p>
+            <p>ISBN: {{ book.ISBN }}</p>
+            <p>Price: {{ book.price }}$</p>
+            <p>Publish date: {{ book.publish_date }}</p>
+        </div>
+        <br>
+        <hr>
+    {% endfor %}
+
+{% endblock content %}

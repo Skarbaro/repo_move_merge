@@ -4,9 +4,6 @@ section#filesystem {
     width: 43vw;
     height: 30vh;
     margin-right: 0.5vw;
-
-    opacity: 0;
-    transition: opacity .5s cubic-bezier(0.4, 0, 3, 1);
 }
 
 div#fs_disp_container > * {
